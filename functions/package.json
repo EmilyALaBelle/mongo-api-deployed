@@ -6,8 +6,9 @@
     "serve": "firebase emulators:start --only functions",
     "shell": "firebase functions:shell",
     "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "deploy": "firebase deploy",
+    "logs": "firebase functions:log",
+    "emulators": "firebase emulators:start"
   },
   "engines": {
     "node": "16"
