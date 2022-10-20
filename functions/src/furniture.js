@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb"
 import dbConnect from "./dbConnect.js"
 
 export async function getAllFurniture(req, res) {
@@ -28,4 +29,16 @@ export async function addNewFurniture(req, res) {
         })
     //return responce with 201 all bueno
     res.status(201).send({ message: 'Furniture added' })
+}
+
+export async function updateFurniture(req, res) {
+  const {furnitureId} = req.params
+  const db = dbConnect()
+  await db.collection('furniture')
+  .findOneAndUpdate({_id: new ObjectId(furnitureId)}, {$set: req.body})
+  .catch(err => {
+    res.status(500).send(err)
+    return
+  })
+res.status(202).send({message: 'Updated furniture'})
 }
