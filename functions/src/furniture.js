@@ -23,7 +23,9 @@ export async function addNewFurniture(req, res) {
     //put this new furniture into our furniture collecion in our db
     await db.collection('furniture').insertOne(newFurniture)
     //catch errors and send with status 500
-    
+    .catch(err => {
+        res.status(500).send(err)
+    })
     //return responce with 201 all bueno
     res.status(201).send({message: 'Furniture added'})
 }
