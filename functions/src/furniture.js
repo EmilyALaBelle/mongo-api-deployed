@@ -32,13 +32,13 @@ export async function addNewFurniture(req, res) {
 }
 
 export async function updateFurniture(req, res) {
-  const {furnitureId} = req.params
-  const db = dbConnect()
-  await db.collection('furniture')
-  .findOneAndUpdate({_id: new ObjectId(furnitureId)}, {$set: req.body})
-  .catch(err => {
-    res.status(500).send(err)
-    return
-  })
-res.status(202).send({message: 'Updated furniture'})
+    const { furnitureId } = req.params
+    const db = dbConnect()
+    await db.collection('furniture')
+        .findOneAndUpdate({ _id: new ObjectId(furnitureId) }, { $set: req.body })
+        .catch(err => {
+            res.status(500).send(err)
+            return
+        })
+    res.status(202).send({ message: 'Updated furniture' })
 }
