@@ -6,8 +6,8 @@ import { getAllFurniture, addNewFurniture } from './src/furniture.js'
 const app = express()
 app.use(cors())
 app.use(express.json())
-app.post('/furniture',addNewFurniture)
 
+app.post('/furniture', addNewFurniture)
 app.get('/furniture', getAllFurniture)
 
 export const api = functions.https.onRequest(app)
