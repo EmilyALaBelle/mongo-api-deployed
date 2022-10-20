@@ -2,9 +2,9 @@ import dbConnect from "./dbConnect.js"
 
 export async function getAllFurniture(req, res) {
     // connect to the databse 
-    const db = dbConnect
+    const db = dbConnect()
     // get the whole furniture collection
-   const collection = await db.collection("furniture").find().toArray()
+   const collection = await db.collection("furniture").find({}).toArray()
     // catch any errors -> status 500
     .catch(err => {
         res.status(500).send(err)
